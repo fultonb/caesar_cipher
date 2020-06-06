@@ -119,4 +119,4 @@ $ $ paste -d '\n' inputs/preamble.txt test-encode-outs/preamble.txt /dev/null | 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/ "MIT License")
 
-<a id="note1" href="#note1ref"><sup>1</sup></a> :Youens-Clark, K. (2020). *Tiny Python Projects.* Manning Publications.
+<a id="note1" href="#note1ref"><sup>1</sup></a> : Youens-Clark, K. (2020). *Tiny Python Projects.* Manning Publications.
