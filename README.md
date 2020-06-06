@@ -2,12 +2,10 @@
 
 This code will encode and decode text.  
 
-I was deeply influenced by the book "Tiny Python Projects" by  Ken Youens-Clark (ISBN 9781617297519).[^1]  I used the examples and structure layed out by Ken Youens-Clark to create this command-line program.  You can find his code on [Github](https://github.com/kyclark/tiny_python_projects "kyclark/tiny_python_projects") and download it using the following command:
+I was deeply influenced by the book "Tiny Python Projects" by  Ken Youens-Clark (ISBN 9781617297519).<a href="#note1" id="note1ref"><sup>1</sup></a>  I used the examples and structure layed out by Mr. Youens-Clark to create this command-line program.  You can find his code on [Github](https://github.com/kyclark/tiny_python_projects "kyclark/tiny_python_projects") and download it using the following command:
 ```bash
 $ git clone https://github.com/kyclark/tiny_python_projects
 ``` 
-
-[^1]:Youens-Clark, K. (2020). *Tiny Python Projects.* Manning Publications.
 
 A [Caesar Cipher](https://en.wikipedia.org/wiki/Caesar_cipher "From Wikipedia, the free encyclopedia") shifts a letter up or down the alphabet a certain number of places.  The default for this code is a right-rotation of 3 letters.  As an example, abc12 encodes to def45, making def45 decode to abc12.
 
@@ -120,3 +118,5 @@ $ $ paste -d '\n' inputs/preamble.txt test-encode-outs/preamble.txt /dev/null | 
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/ "MIT License")
+
+<a id="note1" href="#note1ref"><sup>1</sup></a> :Youens-Clark, K. (2020). *Tiny Python Projects.* Manning Publications.
