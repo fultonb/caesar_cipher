@@ -1,0 +1,121 @@
+# Caesar Cipher
+
+This code will encode and decode text.  
+
+I was deeply influenced by the book "Tiny Python Projects" by  Ken Youens-Clark (ISBN 9781617297519). footnote:[Youens-Clark, K. (2020). *Tiny Python Projects.* Manning Publications].  I used the examples and structure layed out by Mr. Youens-Clark to create this command-line program.  You can find his code on https://github.com/kyclark/tiny_python_projects[Github^] and download it using the following command:
+```bash
+$ git clone https://github.com/kyclark/tiny_python_projects
+``` 
+
+A https://en.wikipedia.org/wiki/Caesar_cipher[Caesar Cipher^] shifts a letter up or down the alphabet a certain number of places.  The default for this code is a right-rotation of 3 letters.  As an example, abc12 encodes to def45, making def45 decode to abc12.
+
+## Installation
+
+Clone from GitHub.
+
+```bash
+git clone https://github.com/fultonb/caesar_cipher.git
+```
+
+## Usage
+Using text as input:
+```bash
+$ ./cc_encode.py 'Hello World!'
+Khoor Zruog$
+```
+Use the -d flag to decode text:
+```bash
+./cc_encode.py -d 'Khoor Zruog$'
+Hello World!
+```
+Use the -n flag to shift the letters 5 spaces to the right while encoding:
+```bash
+$ ./cc_encode.py -n 5 abc12
+fgh67
+```
+Use the -n flag, with the -d flag, to shift the letters 5 spaces to the left while decoding:
+```bash
+./cc_encode.py -d -n 5 fgh67
+abc12
+```
+Use a file as input:
+```bash
+$ ./cc_encode.py ./inputs/fox.txt 
+Wkh txlfn eurzq irA mxpsv ryhu wkh odCB grj;
+```
+Use the -o flag to use a file as output:
+```bash
+$ ./cc_encode.py -o fox_decoded.txt 'Wkh txlfn eurzq irA mxpsv ryhu wkh odCB grj;' -d
+
+$ more fox_decoded.txt 
+The quick brown fox jumps over the lazy dog.
+```
+Use the -h flag for help:
+```bash
+$ ./cc_encode.py -h
+usage: cc_encode.py [-h] [-n int] [-o str] [-d] text
+
+Encoding and decoding text using the Caesar Cipher
+
+positional arguments:
+  text                  Input text or file
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -n int, --num int     Shift this many spaces (default: 3)
+  -o str, --outfile str
+                        Output filename (default: )
+  -d, --decode          Decode text (default: False)
+```
+Run all tests using:
+```bash
+$ make test
+pytest -xv test.py
+============================================================= test session starts ==============================================================
+...
+collected 16 items                                                                                                                             
+
+test.py::test_exists PASSED                                                                                                              [  6%]
+test.py::test_usage PASSED                                                                                                               [ 12%]
+test.py::test_bad_num PASSED                                                                                                             [ 18%]
+test.py::test_encode_text1 PASSED                                                                                                        [ 25%]
+test.py::test_decode_text1 PASSED                                                                                                        [ 31%]
+test.py::test_decode_fox_text_using_2 PASSED                                                                                             [ 37%]
+test.py::test_file_bustle PASSED                                                                                                         [ 43%]
+test.py::test_decode_file_bustle PASSED                                                                                                  [ 50%]
+test.py::test_file_fox PASSED                                                                                                            [ 56%]
+test.py::test_decode_file_fox PASSED                                                                                                     [ 62%]
+test.py::test_file_spiders PASSED                                                                                                        [ 68%]
+test.py::test_decode_file_spiders PASSED                                                                                                 [ 75%]
+test.py::test_text_outfile PASSED                                                                                                        [ 81%]
+test.py::test_decode_text_outfile PASSED                                                                                                 [ 87%]
+test.py::test_file PASSED                                                                                                                [ 93%]
+test.py::test_decode_file PASSED                                                                                                         [100%]
+
+============================================================== 16 passed in 1.10s ==============================================================
+```
+Interleave the input file with the output file (include line numbers):
+```bash
+$ $ paste -d '\n' inputs/preamble.txt test-encode-outs/preamble.txt /dev/null | nl
+     1  When, in the course of human events, it becomes necessary for one people to 
+     2  Zkhq/ lq wkh frxuvh ri kxpdq hyhqwv/ lw ehfrphv qhfhvvduB iru rqh shrsoh wr 
+      
+     3  dissolve the political bands which have connected them with another, and to 
+     4  glvvroyh wkh srolwlfdo edqgv zklfk kdyh frqqhfwhg wkhp zlwk dqrwkhu/ dqg wr 
+      
+     5  assume among the powers of the earth, the separate and equal station to 
+     6  dvvxph dprqj wkh srzhuv ri wkh hduwk/ wkh vhsdudwh dqg htxdo vwdwlrq wr 
+      
+     7  which the laws of nature and of nature's God entitle them, a decent respect 
+     8  zklfk wkh odzv ri qdwxuh dqg ri qdwxuh*v Jrg hqwlwoh wkhp/ d ghfhqw uhvshfw 
+      
+     9  to the opinions of mankind requires that they should declare the causes 
+    10  wr wkh rslqlrqv ri pdqnlqg uhtxluhv wkdw wkhB vkrxog ghfoduh wkh fdxvhv 
+      
+    11  which impel them to the separation.
+    12  zklfk lpsho wkhp wr wkh vhsdudwlrq;
+```
+
+## License
+https://choosealicense.com/licenses/mit/[MIT]
+
