@@ -9,8 +9,10 @@ from subprocess import getstatusoutput, getoutput
 
 prg = './cc_encode.py'
 decode = '-d'
+lower_case = '-l'
 fox = './inputs/fox.txt'
 encoded_fox = './inputs/encoded_fox.txt'
+encoded_fox_lc = './inputs/encoded_fox_lower_case.txt'
 bustle = './inputs/the-bustle.txt'
 spiders = './inputs/spiders.txt'
 encoded_spiders = './inputs/encoded_spiders.txt'
@@ -85,7 +87,7 @@ Zh vkdoo qrw zdqw wr xvh djdlq
 Xqwlo hwhuqlwB;
 """.strip()
 
-    out = getoutput(f'{prg} --num 3 {bustle}')
+    out = getoutput(f'{prg} {bustle}')
     assert out.strip() == expected.strip()
 
 
@@ -117,7 +119,7 @@ We shall not want to use again
 Until eternity.
 """.strip()
 
-    out = getoutput(f'{prg} {decode} --num 3 "{text}"')
+    out = getoutput(f'{prg} {decode} "{text}"')
     assert out.strip() == expected.strip()
 
 
@@ -134,6 +136,21 @@ def test_decode_file_fox():
     """File input"""
 
     out = getoutput(f'{prg} {decode} --num 4 {encoded_fox}')
+    assert out.strip() == 'The quick brown fox jumps over the lazy dog.'
+
+
+def test_file_fox_lower_case():
+    """File input"""
+
+    out = getoutput(f'{prg} {lower_case} --num 4 {fox}')
+    assert out.strip() == 'Tli uymgo fvsar jsb nyqtw sziv xli pedc hsk.'
+
+
+# --------------------------------------------------
+def test_decode_file_fox_lower_case():
+    """File input"""
+
+    out = getoutput(f'{prg} {decode} {lower_case} --num 4 {encoded_fox_lc}')
     assert out.strip() == 'The quick brown fox jumps over the lazy dog.'
 
 
