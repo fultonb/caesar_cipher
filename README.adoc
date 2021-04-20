@@ -71,32 +71,39 @@ Run all tests using:
 ```bash
 $ make test
 pytest -xv test.py
-============================================================= test session starts ==============================================================
+================================ test session starts =================================
 ...
 collected 16 items                                                                                                                             
 
-test.py::test_exists PASSED                                                                                                              [  6%]
-test.py::test_usage PASSED                                                                                                               [ 12%]
-test.py::test_bad_num PASSED                                                                                                             [ 18%]
-test.py::test_encode_text1 PASSED                                                                                                        [ 25%]
-test.py::test_decode_text1 PASSED                                                                                                        [ 31%]
-test.py::test_decode_fox_text_using_2 PASSED                                                                                             [ 37%]
-test.py::test_file_bustle PASSED                                                                                                         [ 43%]
-test.py::test_decode_file_bustle PASSED                                                                                                  [ 50%]
-test.py::test_file_fox PASSED                                                                                                            [ 56%]
-test.py::test_decode_file_fox PASSED                                                                                                     [ 62%]
-test.py::test_file_spiders PASSED                                                                                                        [ 68%]
-test.py::test_decode_file_spiders PASSED                                                                                                 [ 75%]
-test.py::test_text_outfile PASSED                                                                                                        [ 81%]
-test.py::test_decode_text_outfile PASSED                                                                                                 [ 87%]
-test.py::test_file PASSED                                                                                                                [ 93%]
-test.py::test_decode_file PASSED                                                                                                         [100%]
+test.py::test_exists PASSED                                                [  5%]
+test.py::test_usage PASSED                                                 [ 11%]
+test.py::test_bad_num PASSED                                               [ 16%]
+test.py::test_encode_text1 PASSED                                          [ 22%]
+test.py::test_decode_text1 PASSED                                          [ 27%]
+test.py::test_decode_fox_text_using_2 PASSED                               [ 33%]
+test.py::test_file_bustle PASSED                                           [ 38%]
+test.py::test_decode_file_bustle PASSED                                    [ 44%]
+test.py::test_file_fox PASSED                                              [ 50%]
+test.py::test_decode_file_fox PASSED                                       [ 55%]
+test.py::test_file_fox_lower_case PASSED                                   [ 61%]
+test.py::test_decode_file_fox_lower_case PASSED                            [ 66%]
+test.py::test_file_spiders PASSED                                          [ 72%]
+test.py::test_decode_file_spiders PASSED                                   [ 77%]
+test.py::test_text_outfile PASSED                                          [ 83%]
+test.py::test_decode_text_outfile PASSED                                   [ 88%]
+test.py::test_file PASSED                                                  [ 94%]
+test.py::test_decode_file PASSED                                           [100%]
 
-============================================================== 16 passed in 1.10s ==============================================================
+================================= 18 passed in 1.73s =================================
+```
+Type check using mypy:
+```bash
+$ mypy cc_encode.py 
+Success: no issues found in 1 source file 
 ```
 Interleave the input file with the output file (include line numbers):
 ```bash
-$ $ paste -d '\n' inputs/preamble.txt test-encode-outs/preamble.txt /dev/null | nl
+$ paste -d '\n' inputs/preamble.txt test-encode-outs/preamble.txt /dev/null | nl
      1  When, in the course of human events, it becomes necessary for one people to 
      2  Zkhq/ lq wkh frxuvh ri kxpdq hyhqwv/ lw ehfrphv qhfhvvduB iru rqh shrsoh wr 
       
