@@ -53,7 +53,7 @@ The quick brown fox jumps over the lazy dog.
 Use the -h flag for help:
 ```bash
 $ ./cc_encode.py -h
-usage: cc_encode.py [-h] [-n int] [-o str] [-d] text
+usage: cc_encode.py [-h] [-n int] [-o str] [-d] [-l] text
 
 Encoding and decoding text using the Caesar Cipher
 
@@ -66,6 +66,7 @@ optional arguments:
   -o str, --outfile str
                         Output filename (default: )
   -d, --decode          Decode text (default: False)
+  -l, --lower_case      Uses only lower case alphabet (default: False)
 ```
 Run all tests using:
 ```bash
