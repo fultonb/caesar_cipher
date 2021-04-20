@@ -9,6 +9,16 @@ import argparse
 import os
 import string
 import sys
+from typing import NamedTuple
+
+
+class Args(NamedTuple):
+    """ Command-line arguments """
+    text: str
+    num: int
+    outfile: str
+    decode: bool
+    lower_case: bool
 
 
 # --------------------------------------------------
@@ -40,6 +50,11 @@ def get_args():
                         help='Decode text',
                         action='store_true')
 
+    parser.add_argument('-l',
+                        '--lower_case',
+                        help='Uses only lower case alphabet',
+                        action='store_true')
+
     args = parser.parse_args()
     num = args.num
     text = args.text
@@ -50,13 +65,19 @@ def get_args():
     if os.path.isfile(text):
         args.text = open(text).read().rstrip()
 
-    return args
+    return Args(text=args.text,
+                num=args.num,
+                outfile=args.outfile,
+                decode=args.decode,
+                lower_case=args.lower_case)
 
 
 # --------------------------------------------------
-def caesar_cipher_encode(n, text):
+def caesar_cipher_encode(n: int, text: str, p: str) -> str:
     """
-    Returns a string where the characters in text are shifted right n number of spaces.
+    Returns a string where the characters in text are shifted right n number
+    of spaces. The characters in text are only encrypted if they exist in p.
+    If they don't exist in p, they will remain unchanged.
 
     Ex.  str = 'abc12'
          n = 3
@@ -65,23 +86,26 @@ def caesar_cipher_encode(n, text):
 
     Notes:
 
-    p = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~'
+    Currently p can be string.ascii_lowercase or string.printable characters.
 
-    str.maketrans returns a translation table that replaces items in p with items in p[n:] + p[:n],
-    which is just the string p shifted to the right n units.
+    str.maketrans returns a translation table that replaces items in p with
+    items in p[n:] + p[:n], which is just the string p shifted to the right n
+    units.
 
-    my_str.translate(lookup_table) returns a copy of my_str using the lookup table.
+    my_str.translate(lookup_table) returns a copy of my_str using the lookup
+    table.
     """
-    p = string.printable.strip(string.whitespace)
     lookup_table = str.maketrans(p, p[n:] + p[:n])
 
     return text.translate(lookup_table)
 
 
 # --------------------------------------------------
-def caesar_cipher_decode(n, text):
+def caesar_cipher_decode(n: int, text: str, p: str) -> str:
     """
-    Returns a string where the characters in text are shifted left n number of spaces.
+    Returns a string where the characters in text are shifted left n number of
+    spaces. The characters in text are only decrypted if they exist in p. If
+    they don't exist in p, they will remain unchanged.
 
     Ex.  str = 'def45'
          n = 3
@@ -90,21 +114,22 @@ def caesar_cipher_decode(n, text):
 
     Notes:
 
-    p = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~'
+    Currently p can be string.ascii_lowercase or string.printable characters.
 
-    str.maketrans returns a translation table that replaces items in p with items in p[-n:] + p[:-n],
-    which is just the string p shifted to the left n units.
+    str.maketrans returns a translation table that replaces items in p with
+    items in p[-n:] + p[:-n], which is just the string p shifted to the left n
+    units.
 
-    my_str.translate(lookup_table) returns a copy of my_str using the lookup table.
+    my_str.translate(lookup_table) returns a copy of my_str using the lookup
+    table.
     """
-    p = string.printable.strip(string.whitespace)
     lookup_table = str.maketrans(p, p[-n:] + p[:-n])
 
     return text.translate(lookup_table)
 
 
 # --------------------------------------------------
-def main():
+def main() -> None:
     """Encode and decode text using the command-line."""
 
     args = get_args()
@@ -112,10 +137,16 @@ def main():
     n = args.num
     outfile = args.outfile
     decode = args.decode
+    lower_case = args.lower_case
+
+    if lower_case:
+        p = string.ascii_lowercase.strip(string.whitespace)
+    else:
+        p = string.printable.strip(string.whitespace)
 
     out_fh = open(outfile, 'wt') if outfile else sys.stdout
-    out_fh.write(caesar_cipher_decode(n, text)) if decode else out_fh.write(
-        caesar_cipher_encode(n, text))
+    out_fh.write(caesar_cipher_decode(n, text, p)) if decode else out_fh.write(
+        caesar_cipher_encode(n, text, p))
     out_fh.write('\n')
     out_fh.close()
 
