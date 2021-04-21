@@ -28,6 +28,16 @@ Use the -d flag to decode text:
 ./cc_encode.py -d 'Khoor Zruog$'
 Hello World!
 ```
+Using the -l flag:
+```bash
+$ ./cc_encode.py -l 'Hello World!'
+Hhoor Wruog!
+```
+Use the -d and -l flag to decode text:
+```bash
+./cc_encode.py -d -l 'Hhoor Wruog!'
+Hello World!
+```
 Use the -n flag to shift the letters 5 spaces to the right while encoding:
 ```bash
 $ ./cc_encode.py -n 5 abc12
@@ -74,28 +84,29 @@ $ make test
 pytest -xv test.py
 ================================ test session starts =================================
 ...
-collected 16 items                                                                                                                             
+collected 19 items                                                                                                      
 
 test.py::test_exists PASSED                                                [  5%]
-test.py::test_usage PASSED                                                 [ 11%]
-test.py::test_bad_num PASSED                                               [ 16%]
-test.py::test_encode_text1 PASSED                                          [ 22%]
-test.py::test_decode_text1 PASSED                                          [ 27%]
-test.py::test_decode_fox_text_using_2 PASSED                               [ 33%]
-test.py::test_file_bustle PASSED                                           [ 38%]
-test.py::test_decode_file_bustle PASSED                                    [ 44%]
-test.py::test_file_fox PASSED                                              [ 50%]
-test.py::test_decode_file_fox PASSED                                       [ 55%]
-test.py::test_file_fox_lower_case PASSED                                   [ 61%]
-test.py::test_decode_file_fox_lower_case PASSED                            [ 66%]
-test.py::test_file_spiders PASSED                                          [ 72%]
-test.py::test_decode_file_spiders PASSED                                   [ 77%]
-test.py::test_text_outfile PASSED                                          [ 83%]
-test.py::test_decode_text_outfile PASSED                                   [ 88%]
+test.py::test_usage PASSED                                                 [ 10%]
+test.py::test_bad_num PASSED                                               [ 15%]
+test.py::test_bad_num_lower_case PASSED                                    [ 21%]
+test.py::test_encode_text1 PASSED                                          [ 26%]
+test.py::test_decode_text1 PASSED                                          [ 31%]
+test.py::test_decode_fox_text_using_2 PASSED                               [ 36%]
+test.py::test_file_bustle PASSED                                           [ 42%]
+test.py::test_decode_file_bustle PASSED                                    [ 47%]
+test.py::test_file_fox PASSED                                              [ 52%]
+test.py::test_decode_file_fox PASSED                                       [ 57%]
+test.py::test_file_fox_lower_case PASSED                                   [ 63%]
+test.py::test_decode_file_fox_lower_case PASSED                            [ 68%]
+test.py::test_file_spiders PASSED                                          [ 73%]
+test.py::test_decode_file_spiders PASSED                                   [ 78%]
+test.py::test_text_outfile PASSED                                          [ 84%]
+test.py::test_decode_text_outfile PASSED                                   [ 89%]
 test.py::test_file PASSED                                                  [ 94%]
 test.py::test_decode_file PASSED                                           [100%]
 
-================================= 18 passed in 1.73s =================================
+================================= 19 passed in 1.93s =================================
 ```
 Type check using mypy:
 ```bash
