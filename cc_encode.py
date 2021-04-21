@@ -58,7 +58,13 @@ def get_args():
     args = parser.parse_args()
     num = args.num
     text = args.text
+    lower_case = args.lower_case
 
+    # n needs to be greater than 1.
+    # If n is greater than the high bound, then the input string to be
+    # decoded is returned by the encode and decode functions.
+    if lower_case and not 1 <= num <= 25:
+        parser.error(f'--num "{num}" must be between 1 and 25')
     if not 1 <= num <= 93:
         parser.error(f'--num "{num}" must be between 1 and 93')
 

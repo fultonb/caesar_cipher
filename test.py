@@ -46,6 +46,16 @@ def test_bad_num():
 
 
 # --------------------------------------------------
+def test_bad_num_lower_case():
+    """test bad_num"""
+
+    for n in [random.choice(r) for r in (range(-10, 0), range(26, 36))]:
+        rv, out = getstatusoutput(f'{prg} {lower_case} -n {n} hello')
+        assert rv != 0
+        assert re.search(f'--num "{n}" must be between 1 and 25', out)
+
+
+# --------------------------------------------------
 def test_encode_text1():
     """Text"""
 
