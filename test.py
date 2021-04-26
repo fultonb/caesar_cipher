@@ -75,10 +75,11 @@ def test_decode_text1():
 def test_decode_fox_text_using_2():
     """Text"""
 
-    text = 'Vjg swkem dtqyp hqz lworu qxgt vjg ncBA fqi:'
+    text = 'Vjg1swkem1dtqyp1hqz1lworu1qxgt1vjg1ncBA1fqi:'
     expected = 'The quick brown fox jumps over the lazy dog.'
     out = getoutput(f'{prg} {decode} "{text}" -n 2')
-    assert out.strip() == expected
+    # assert out.strip() == expected
+    assert out == expected
 
 
 # --------------------------------------------------
@@ -86,15 +87,15 @@ def test_file_bustle():
     """File input"""
 
     expected = """
-Wkh exvwoh lq d krxvh
-Wkh pruqlqj diwhu ghdwk
-Lv vrohpqhvw ri lqgxvwulhv
-Hqdfwhg xsrq hduwk/::
+Wkh2exvwoh2lq2d2krxvh
+Wkh2pruqlqj2diwhu2ghdwk
+Lv2vrohpqhvw2ri2lqgxvwulhv
+Hqdfwhg2xsrq2hduwk/::
 
-Wkh vzhhslqj xs wkh khduw/
-Dqg sxwwlqj oryh dzdB
-Zh vkdoo qrw zdqw wr xvh djdlq
-Xqwlo hwhuqlwB;
+Wkh2vzhhslqj2xs2wkh2khduw/
+Dqg2sxwwlqj2oryh2dzdB
+Zh2vkdoo2qrw2zdqw2wr2xvh2djdlq
+Xqwlo2hwhuqlwB;
 """.strip()
 
     out = getoutput(f'{prg} {bustle}')
@@ -106,15 +107,15 @@ def test_decode_file_bustle():
     """File input"""
 
     text = """
-Wkh exvwoh lq d krxvh
-Wkh pruqlqj diwhu ghdwk
-Lv vrohpqhvw ri lqgxvwulhv
-Hqdfwhg xsrq hduwk/::
+Wkh2exvwoh2lq2d2krxvh
+Wkh2pruqlqj2diwhu2ghdwk
+Lv2vrohpqhvw2ri2lqgxvwulhv
+Hqdfwhg2xsrq2hduwk/::
 
-Wkh vzhhslqj xs wkh khduw/
-Dqg sxwwlqj oryh dzdB
-Zh vkdoo qrw zdqw wr xvh djdlq
-Xqwlo hwhuqlwB;
+Wkh2vzhhslqj2xs2wkh2khduw/
+Dqg2sxwwlqj2oryh2dzdB
+Zh2vkdoo2qrw2zdqw2wr2xvh2djdlq
+Xqwlo2hwhuqlwB;
 """.strip()
 
     expected = """
@@ -138,7 +139,7 @@ def test_file_fox():
     """File input"""
 
     out = getoutput(f'{prg} --num 4 {fox}')
-    assert out.strip() == 'Xli uymgo fvsAr jsB nyqtw sziv xli peDC hsk<'
+    assert out.strip() == 'Xli3uymgo3fvsAr3jsB3nyqtw3sziv3xli3peDC3hsk<'
 
 
 # --------------------------------------------------
@@ -169,7 +170,9 @@ def test_file_spiders():
     """File input"""
 
     out = getoutput(f'{prg} --num 9 {spiders}')
-    expected = "Mxw:C FxAAH? ByrmnAB?\nR tnny qxDBn\nljBDjuuH["
+    expected = """Mxw:C8FxAAH?8ByrmnAB?
+R8tnny8qxDBn
+ljBDjuuH["""
     assert out.strip() == expected
 
 
@@ -210,7 +213,7 @@ def test_text_outfile():
         assert out.strip() == ''
         assert os.path.isfile(out_file)
         text = open(out_file).read().rstrip()
-        assert text == 'irr edu edC'
+        assert text == 'irr2edu2edC'
     finally:
         if os.path.isfile(out_file):
             os.remove(out_file)
@@ -226,7 +229,7 @@ def test_decode_text_outfile():
 
     try:
         out = getoutput(
-            f'{prg} {decode} {out_flag()} {out_file} "irr edu edC"')
+            f'{prg} {decode} {out_flag()} {out_file} "irr2edu2edC"')
         assert out.strip() == ''
         assert os.path.isfile(out_file)
         text = open(out_file).read().rstrip()

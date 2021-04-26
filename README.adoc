@@ -21,11 +21,11 @@ git clone https://github.com/fultonb/caesar_cipher.git
 Using text as input:
 ```bash
 $ ./cc_encode.py 'Hello World!'
-Khoor Zruog$
+Khoor2Zruog$
 ```
 Use the -d flag to decode text:
 ```bash
-./cc_encode.py -d 'Khoor Zruog$'
+./cc_encode.py -d 'Khoor2Zruog$'
 Hello World!
 ```
 Using the -l flag:
@@ -51,11 +51,11 @@ abc12
 Use a file as input:
 ```bash
 $ ./cc_encode.py ./inputs/fox.txt 
-Wkh txlfn eurzq irA mxpsv ryhu wkh odCB grj;
+Wkh2txlfn2eurzq2irA2mxpsv2ryhu2wkh2odCB2grj;
 ```
 Use the -o flag to use a file as output:
 ```bash
-$ ./cc_encode.py -o fox_decoded.txt 'Wkh txlfn eurzq irA mxpsv ryhu wkh odCB grj;' -d
+$ ./cc_encode.py -o fox_decoded.txt 'Wkh2txlfn2eurzq2irA2mxpsv2ryhu2wkh2odCB2grj;' -d
 
 $ more fox_decoded.txt 
 The quick brown fox jumps over the lazy dog.
@@ -117,22 +117,22 @@ Interleave the input file with the output file (include line numbers):
 ```bash
 $ paste -d '\n' inputs/preamble.txt test-encode-outs/preamble.txt /dev/null | nl
      1  When, in the course of human events, it becomes necessary for one people to 
-     2  Zkhq/ lq wkh frxuvh ri kxpdq hyhqwv/ lw ehfrphv qhfhvvduB iru rqh shrsoh wr 
+     2  Zkhq/2lq2wkh2frxuvh2ri2kxpdq2hyhqwv/2lw2ehfrphv2qhfhvvduB2iru2rqh2shrsoh2wr2
       
      3  dissolve the political bands which have connected them with another, and to 
-     4  glvvroyh wkh srolwlfdo edqgv zklfk kdyh frqqhfwhg wkhp zlwk dqrwkhu/ dqg wr 
+     4  glvvroyh2wkh2srolwlfdo2edqgv2zklfk2kdyh2frqqhfwhg2wkhp2zlwk2dqrwkhu/2dqg2wr2
       
      5  assume among the powers of the earth, the separate and equal station to 
-     6  dvvxph dprqj wkh srzhuv ri wkh hduwk/ wkh vhsdudwh dqg htxdo vwdwlrq wr 
+     6  dvvxph2dprqj2wkh2srzhuv2ri2wkh2hduwk/2wkh2vhsdudwh2dqg2htxdo2vwdwlrq2wr2
       
      7  which the laws of nature and of nature's God entitle them, a decent respect 
-     8  zklfk wkh odzv ri qdwxuh dqg ri qdwxuh*v Jrg hqwlwoh wkhp/ d ghfhqw uhvshfw 
+     8  zklfk2wkh2odzv2ri2qdwxuh2dqg2ri2qdwxuh*v2Jrg2hqwlwoh2wkhp/2d2ghfhqw2uhvshfw2
       
      9  to the opinions of mankind requires that they should declare the causes 
-    10  wr wkh rslqlrqv ri pdqnlqg uhtxluhv wkdw wkhB vkrxog ghfoduh wkh fdxvhv 
+    10  wr2wkh2rslqlrqv2ri2pdqnlqg2uhtxluhv2wkdw2wkhB2vkrxog2ghfoduh2wkh2fdxvhv2
       
     11  which impel them to the separation.
-    12  zklfk lpsho wkhp wr wkh vhsdudwlrq;
+    12  zklfk2lpsho2wkhp2wr2wkh2vhsdudwlrq;
 ```
 
 ## License

@@ -93,6 +93,8 @@ def caesar_cipher_encode(n: int, text: str, p: str) -> str:
     Notes:
 
     Currently p can be string.ascii_lowercase or string.printable characters.
+    The only whitespace string.printable will use is " ". (one space only,
+    no newline, tabs, etc.)
 
     str.maketrans returns a translation table that replaces items in p with
     items in p[n:] + p[:n], which is just the string p shifted to the right n
@@ -121,6 +123,8 @@ def caesar_cipher_decode(n: int, text: str, p: str) -> str:
     Notes:
 
     Currently p can be string.ascii_lowercase or string.printable characters.
+    The only whitespace string.printable will use is " ". (one space only, no
+    newline, tabs, etc.)
 
     str.maketrans returns a translation table that replaces items in p with
     items in p[-n:] + p[:-n], which is just the string p shifted to the left n
@@ -146,9 +150,9 @@ def main() -> None:
     lower_case = args.lower_case
 
     if lower_case:
-        p = string.ascii_lowercase.strip(string.whitespace)
+        p = string.ascii_lowercase
     else:
-        p = string.printable.strip(string.whitespace)
+        p = string.printable[:-5]
 
     out_fh = open(outfile, 'wt') if outfile else sys.stdout
     out_fh.write(caesar_cipher_decode(n, text, p)) if decode else out_fh.write(
