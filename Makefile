@@ -7,4 +7,4 @@ test:
 	pytest -xv test.py
 
 clean:
-	rm -rf __pycache__ .pytest
+	rm -rf __pycache__ .pytest_cache .mypy_cache
