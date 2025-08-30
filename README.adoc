@@ -28,12 +28,12 @@ Use the -d flag to decode text:
 ./cc_encode.py -d 'Khoor2Zruog$'
 Hello World!
 ```
-Using the -l flag:
+Using the -l flag to encode only lowercase text:
 ```bash
 $ ./cc_encode.py -l 'Hello World!'
 Hhoor Wruog!
 ```
-Use the -d and -l flag to decode text:
+Use the -d and -l flag to decode only lower case text:
 ```bash
 ./cc_encode.py -d -l 'Hhoor Wruog!'
 Hello World!
