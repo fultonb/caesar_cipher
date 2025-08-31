@@ -136,4 +136,4 @@ $ paste -d '\n' inputs/preamble.txt test-encode-outs/preamble.txt /dev/null | nl
 ```
 
 ## License
-https://mit-license.org
+link:./LICENSE[MIT]
